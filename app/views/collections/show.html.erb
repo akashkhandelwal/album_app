@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= link_to @collection.user.name, user_path(@collection.user) %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @collection.name %>
+</p>
+
+<ul class="thumbs">
+	<% @photos.each do |photo| %>
+		<li>
+			<%= image_tag photo.image.url, size: '200x200' %>
+			<% if photo.tags.any? %>
+				<p>Tags: 
+					<% photo.tags.collect do |tag| %>
+						<%= tag.name %>
+					<% end %>
+				</p>
+			<% end %>
+		</li>
+
+	<% end %>
+</ul>
+
+
+<%= link_to 'Edit', edit_collection_path(@collection) %> |
+<%= link_to 'Albums', collections_path %> |
+<%= link_to 'Users', users_path %>
