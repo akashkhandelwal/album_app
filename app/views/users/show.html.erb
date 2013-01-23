@@ -1,15 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<ul>
-	<% @user.collections.each do |collection| %>
-		<li><%= link_to collection.name, collection_path(collection.id) %></li>
+<div class="hero-unit">
+	<h1><%= @user.name %></h1>
+	<% if @user.collections.any? %>
+		<h4>Your albums are listed below:</h4>
+		<ul>
+			<% @user.collections.each do |collection| %>
+				<li style="list-style-type: none;"><%= link_to collection.name.upcase, collection_path(collection.id), class: "btn btn-link" %></li>
+			<% end %>
+		</ul>
 	<% end %>
-</ul>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Users', users_path %>
+	<%= link_to 'Edit Albums', edit_user_path(@user), class: "btn btn-primary btn-large" %>
+</div>

@@ -1,32 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="hero-unit">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <b>User:</b>
-  <%= link_to @collection.user.name, user_path(@collection.user) %>
-</p>
+	<p>
+	  <b>Owned by:</b>
+	  <%= link_to @collection.user.name, user_path(@collection.user) %>
+	</p>
 
-<p>
-  <b>Name:</b>
-  <%= @collection.name %>
-</p>
+	 <h1><%= @collection.name %></h1>
 
-<ul class="thumbs">
-	<% @photos.each do |photo| %>
-		<li>
-			<%= image_tag photo.image.url, size: '200x200' %>
-			<% if photo.tags.any? %>
-				<p>Tags: 
-					<% photo.tags.collect do |tag| %>
-						<%= tag.name %>
+	<ul class="thumbnails">
+		<% @photos.each do |photo| %>
+			<li class="span4">
+				<div class="thumbnail">
+					<%= image_tag photo.image.url, size: '200x200' %>
+					<% if photo.tags.any? %>
+						<h3 style="margin-bottom: 0;">Tags: </h3>
+						<p>
+							<% photo.tags.collect do |tag| %>
+								<%= "#{tag.name} " %>
+							<% end %>
+						</p>
 					<% end %>
-				</p>
-			<% end %>
-		</li>
+				</div>
+			</li>
 
-	<% end %>
-</ul>
+		<% end %>
+	</ul>
 
-
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
-<%= link_to 'Albums', collections_path %> |
-<%= link_to 'Users', users_path %>
+	<%= link_to 'Edit', edit_user_path(@collection.user), class: "btn btn-primary 	" %>
+</div>

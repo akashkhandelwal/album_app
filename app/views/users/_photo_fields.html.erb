@@ -1,12 +1,17 @@
 <div class="photo_field">
 	
-	<p><%= f.file_field :image %></p>
+	<p>
+		<%= f.label :image, 'Upload Photo' %>
+		<%= f.file_field :image %>
+	</p>
 	
 	<p>
-	  <%= f.label :tag_list %><br />
+	  <%= f.label :tag_list %>
 	  <%= f.text_field :tag_list %>
 	</p>
-
-	<%= f.check_box :_destroy %>
-	<%= f.label :_destroy, "Remove photo" %>
+	
+	<div>
+		<%= f.check_box :_destroy, style: "margin-right: 5px; float: left;" %>
+		<%= f.label :_destroy, "Remove photo" %>
+	</div>
 </div>
