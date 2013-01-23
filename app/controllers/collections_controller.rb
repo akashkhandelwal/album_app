@@ -28,7 +28,7 @@ class CollectionsController < ApplicationController
     @collection = Collection.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { redirect_to new_user_path }
       format.json { render json: @collection }
     end
   end
@@ -36,6 +36,8 @@ class CollectionsController < ApplicationController
   # GET /collections/1/edit
   def edit
     @collection = Collection.find(params[:id])
+
+    redirect_to edit_user_path(@collection.user)
   end
 
   # POST /collections
